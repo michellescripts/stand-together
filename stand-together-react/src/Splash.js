@@ -1,14 +1,12 @@
 import React from 'react'
-import splashimg from './standpeople.jpg'
+import styles from './splash.css'
 
 const Splash = () => (
   <div>
-    <h2>Stand Together</h2>
-    <p>Get Started Now</p>
-    <button><a href='/new'>Create a Stand Up</a></button>
-    <hr />
-    <h2>SPLASH PAGE STUFFFF</h2>
-    <img src={splashimg} alt='standing people' style={{width: '50%'}} />
+    <div className='homeNavBar'>
+      <h2>Stand Together</h2>
+      <button className='right button'><a href='/new'>Create a Stand Up</a></button>
+    </div>
   </div>
 )
 

@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.15.3",
+    "redux": "^3.7.1",
     "shortid": "^2.2.8"
   },
   "scripts": {

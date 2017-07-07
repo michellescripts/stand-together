@@ -9,24 +9,25 @@ app.use((req, res, next) => {
 })
 
 app.get('/', (req, res) => {
+  console.log('index loading')
   res.sendFile(path.join(__dirname, 'stand-together-react', 'build', 'index.html'))
 })
 
 app.use(express.static(path.join(__dirname, 'stand-together-react', 'build')))
 
 app.get('/standup/*', (req, res) => {
-  console.log('new stand up')
+  console.log('new stand up page created')
   res.sendFile(path.join(__dirname, 'stand-together-react', 'build', 'index.html'))
 })
 
 app.get('/new', (req, res) => {
-  console.log('hit new')
+  console.log('hit new standup')
   let id = shortid.generate()
   res.redirect('/standup/' + id)
 })
 
 app.get('*', (req, res) => {
-  console.log('home here')
+  console.log('hit 404 on * route')
   res.send('404', 404)
 })
 

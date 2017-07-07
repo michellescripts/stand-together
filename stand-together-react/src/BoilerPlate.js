@@ -1,13 +1,29 @@
 import React from 'react'
-import splashimg from './standpeople.jpg'
+import TopicItem from './topicitem'
+
+// function copyToClipboard (element) {
+//   var $temp = $('<input>')
+//   $('body').append($temp)
+//   $temp.val($(element).text()).select()
+//   document.execCommand('copy')
+//   $temp.remove()
+// }
 
 const BP = (props) => {
   const { match } = props
   return (
     <div>
-      <h2>Stand Together</h2>
-      <h2>{match.params.id}</h2>
-      <p>THIS IS THE BP STAND UP PAGE</p>
+      <div className='homeNavBar'>
+        <h2>Stand Together</h2>
+        <p id='p1'>http/localhost:5000/standup/{match.params.id}</p>
+        <button className='button right' onclick="copyToClipboard('#p1')">Copy Link</button>
+      </div>
+      <div className='flexRow'>
+        <TopicItem title='Resource' />
+        <TopicItem title='Interestings' />
+        <TopicItem title='Events' />
+        <TopicItem title='Updates' />
+      </div>
     </div>
   )
 }
