@@ -7,17 +7,7 @@ import {
 
 // import DiscussionItem from './discussionItem'
 import Splash from './Splash'
-
-const Standup = (props) => {
-  const { match } = props
-  return (
-    <div>
-      <h2>Stand Together</h2>
-      <h2>{match.params.id}</h2>
-      <p>THIS IS THE STAND UP PAGE</p>
-    </div>
-  )
-}
+import BP from './BoilerPlate'
 
 class App extends Component {
   render () {
@@ -26,7 +16,7 @@ class App extends Component {
         <Router>
           <div>
             <Route exact path='/' component={Splash} />
-            <Route path='/standup/:id' component={Standup} />
+            <Route path='/standup/:id' component={BP} />
           </div>
         </Router>
       </div>
