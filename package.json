@@ -10,6 +10,11 @@
     "shortid": "^2.2.8"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "concurrently \"yarn run server\" \"yarn run client\"",
+    "server": "node index.js",
+    "client": "node start-client.js"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0"
   }
 }

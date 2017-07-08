@@ -8,12 +8,14 @@ app.use((req, res, next) => {
   next()
 })
 
-app.get('/', (req, res) => {
-  console.log('index loading')
-  res.sendFile(path.join(__dirname, 'stand-together-react', 'build', 'index.html'))
-})
+// app.get('/', (req, res) => {
+//   console.log('index loading')
+//   res.sendFile(path.join(__dirname, 'stand-together-react', 'build', 'index.html'))
+// })
 
-app.use(express.static(path.join(__dirname, 'stand-together-react', 'build')))
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'stand-together-react', 'build')))
+}
 
 app.get('/standup/*', (req, res) => {
   console.log('new stand up page created')
