@@ -16,7 +16,7 @@ const BP = (props) => {
       <div className='homeNavBar'>
         <h2>Stand Together</h2>
         <p id='p1'>http/localhost:5000/standup/{match.params.id}</p>
-        <button className='button right' onclick="copyToClipboard('#p1')">Copy Link</button>
+        <button className='button right'>Copy Link</button>
       </div>
       <div className='flexRow'>
         <TopicItem title='Resource' />

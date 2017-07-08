@@ -10,25 +10,39 @@ import styles from './splash.css'
 //   ]
 // }
 
-const TopicItem = (props) => {
-  const {title} = props
-  return (
-    <div className='TopicBox'>
-      <div className='parentFlex'>
-        <h1 className='itemHeader'>{title}</h1>
-        <h1 className='right addStuff'>+</h1>
+class TopicItem extends React.Component {
+  constructor () {
+    super()
+    this.state = {addMode: false}
+  }
+  changeEditMode = () => {
+      this.setState(prevState => ({
+        addMode: !prevState.addMode
+      }))
+  }
+  render () {
+    console.log('state', this.state.addMode);
+    const {title} = this.props
+    const {addMode} = this.state
+    let buttonClasses = 'right'
+    if (addMode) {buttonClasses += ' addMode'}
+    return (
+      <div className='TopicBox'>
+        <div className='parentFlex'>
+          <h1 className='itemHeader'>{title}</h1>
+          <h1 className={buttonClasses} onClick={this.changeEditMode}>+</h1>
+        </div>
+        {addMode && <AddItem />}
+        <hr />
+        <div>insert discussion items here</div>
+        <ul>
+          <li>Item one</li>
+          <li>Item Two</li>
+          <li>Item Three</li>
+        </ul>
       </div>
-      {/* make hidden */}
-      <AddItem />
-      <hr />
-      <div>insert discussion items here</div>
-      <ul>
-        <li>Item one</li>
-        <li>Item Two</li>
-        <li>Item Three</li>
-      </ul>
-    </div>
-  )
+    )
+  }
 }
 
 export default TopicItem
