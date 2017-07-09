@@ -1,16 +1,17 @@
 import React from 'react'
 import TopicItem from './topicitem'
+import { connect } from 'react-redux'
 
-// function copyToClipboard (element) {
-//   var $temp = $('<input>')
-//   $('body').append($temp)
-//   $temp.val($(element).text()).select()
-//   document.execCommand('copy')
-//   $temp.remove()
-// }
+// function copyToClipboard (element)
+
+const mapStateToProps = (state) => {
+  return {
+    topics: state.topics
+  }
+}
 
 const BP = (props) => {
-  const { match } = props
+  const { match, topics } = props
   return (
     <div>
       <div className='homeNavBar'>
@@ -19,13 +20,15 @@ const BP = (props) => {
         <button className='button right'>Copy Link</button>
       </div>
       <div className='flexRow'>
-        <TopicItem title='Resource' />
-        <TopicItem title='Interestings' />
-        <TopicItem title='Events' />
-        <TopicItem title='Updates' />
+        {topics.map((topic) => {
+          return <TopicItem title={topic} key={topic} />
+        })}
       </div>
     </div>
   )
 }
 
-export default BP
+export default connect(
+  mapStateToProps,
+  null
+)(BP)

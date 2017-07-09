@@ -2,14 +2,6 @@ import React from 'react'
 import AddItem from './additem'
 import styles from './splash.css'
 
-// HEY HERE
-// const data = {
-//   discussionItems: [
-//     { title: 'Develop Denver Happy Hour', name: 'Michelle', details: 'Tonight, 6pm at a bar.'},
-//     { title: 'Develop Denver Happy Hour', name: 'Michelle', details: 'Tonight, 6pm at a bar.'}
-//   ]
-// }
-
 class TopicItem extends React.Component {
   constructor () {
     super()
@@ -21,7 +13,6 @@ class TopicItem extends React.Component {
       }))
   }
   render () {
-    console.log('state', this.state.addMode);
     const {title} = this.props
     const {addMode} = this.state
     let buttonClasses = 'right'
@@ -35,11 +26,6 @@ class TopicItem extends React.Component {
         {addMode && <AddItem />}
         <hr />
         <div>insert discussion items here</div>
-        <ul>
-          <li>Item one</li>
-          <li>Item Two</li>
-          <li>Item Three</li>
-        </ul>
       </div>
     )
   }
