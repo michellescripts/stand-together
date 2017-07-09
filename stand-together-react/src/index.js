@@ -13,8 +13,6 @@ store.dispatch(addTopic('Interestings'))
 store.dispatch(addTopic('Events'))
 store.dispatch(addTopic('Resources'))
 store.dispatch(addDiscussionItem('Resources', 'Michelle', 'Learns', 'Or tries to'))
-store.dispatch(addDiscussionItem('Resources', 'Z', 'Learns', 'instruction'))
-store.dispatch(addDiscussionItem('Resources', 'Z', 'Learns', 'instruction'))
 
 ReactDOM.render(
   <Provider store={store}>

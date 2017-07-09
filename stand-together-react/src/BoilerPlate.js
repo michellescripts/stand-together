@@ -1,6 +1,7 @@
 import React from 'react'
 import TopicItem from './topicitem'
 import { connect } from 'react-redux'
+import { addDiscussionItem } from './actions/actions'
 
 // function copyToClipboard (element)
 
@@ -11,8 +12,16 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAddItem: (topic, name, title, details) => {
+      dispatch(addDiscussionItem(topic, name, title, details))
+    }
+  }
+}
+
 const BP = (props) => {
-  const { match, topics, items } = props
+  const { match, topics, items, onAddItem } = props
   return (
     <div>
       <div className='homeNavBar'>
@@ -21,9 +30,9 @@ const BP = (props) => {
         <button className='button right'>Copy Link</button>
       </div>
       <div className='flexRow'>
-        {topics.map((topic) => {
+        {topics.map((topic, i) => {
           const currentItems = items[topic]
-          return <TopicItem title={topic} key={topic} items={currentItems} />
+          return <TopicItem title={topic} key={i} items={currentItems} addAnItem={onAddItem} />
         })}
       </div>
     </div>
@@ -32,5 +41,5 @@ const BP = (props) => {
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(BP)
