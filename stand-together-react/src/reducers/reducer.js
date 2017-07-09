@@ -1,4 +1,4 @@
-import { ADD_TOPIC } from '../actions/actions'
+import { ADD_TOPIC, ADD_DISCUSSION } from '../actions/actions'
 
 const initialState = {
   topics: [],
@@ -13,6 +13,18 @@ const reducer = (state = initialState, action) => {
         itemByTopic: {
           ...state.itemByTopic,
           [action.topic]: []
+        }
+      }
+    case ADD_DISCUSSION:
+      const {name, title, details, topic} = action
+      const currentItems = state.itemByTopic[topic]
+      return {
+        topics: state.topics,
+        itemByTopic: {
+          ...state.itemByTopic,
+          // can do without const current items:
+          // itemByTopic: [...state.itemByTopic[action.topic], {name, title, details}]
+          [topic]: [...currentItems, {name, title, details}]
         }
       }
     default:

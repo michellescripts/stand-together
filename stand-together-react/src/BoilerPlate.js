@@ -6,12 +6,13 @@ import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => {
   return {
-    topics: state.topics
+    topics: state.topics,
+    items: state.itemByTopic
   }
 }
 
 const BP = (props) => {
-  const { match, topics } = props
+  const { match, topics, items } = props
   return (
     <div>
       <div className='homeNavBar'>
@@ -21,7 +22,8 @@ const BP = (props) => {
       </div>
       <div className='flexRow'>
         {topics.map((topic) => {
-          return <TopicItem title={topic} key={topic} />
+          const currentItems = items[topic]
+          return <TopicItem title={topic} key={topic} items={currentItems} />
         })}
       </div>
     </div>

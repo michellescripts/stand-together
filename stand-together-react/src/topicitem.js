@@ -13,7 +13,7 @@ class TopicItem extends React.Component {
       }))
   }
   render () {
-    const {title} = this.props
+    const {title, items} = this.props
     const {addMode} = this.state
     let buttonClasses = 'right'
     if (addMode) {buttonClasses += ' addMode'}
@@ -24,8 +24,17 @@ class TopicItem extends React.Component {
           <h1 className={buttonClasses} onClick={this.changeEditMode}>+</h1>
         </div>
         {addMode && <AddItem />}
-        <hr />
-        <div>insert discussion items here</div>
+        {items.map((item, i) => {
+          const {name, title, details} = item
+          return (
+            <div key={i}>
+              <hr/>
+              <div>Name: {name}</div>
+              <div>Title: {title}</div>
+              <div>{details}</div>
+            </div>
+          )
+        })}
       </div>
     )
   }
