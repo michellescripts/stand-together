@@ -20,6 +20,7 @@ class TopicItem extends React.Component {
     return (
       <div className='TopicBox'>
         <div className='parentFlex'>
+         {/* <div className='gallery'> */}
           <h1 className='itemHeader'>{title}</h1>
           <h1 className={buttonClasses} onClick={this.changeEditMode}>+</h1>
         </div>

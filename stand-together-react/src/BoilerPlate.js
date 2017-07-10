@@ -30,6 +30,7 @@ const BP = (props) => {
         <button className='button right'>Copy Link</button>
       </div>
       <div className='flexRow'>
+        {/* <div className='container'> */}
         {topics.map((topic, i) => {
           const currentItems = items[topic]
           return <TopicItem title={topic} key={i} items={currentItems} addAnItem={onAddItem} />
