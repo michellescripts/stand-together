@@ -112,6 +112,16 @@ transform: rotate(46deg);
   color: #506C64;
 }
 
+.discussionTitle {
+  font-size: 20px;
+  color: #506C64;
+}
+
+.discussionData {
+  font-size: 16px;
+  color: #77CBB9;
+}
+
 /*CSS GRID*/
 
 /*.container {

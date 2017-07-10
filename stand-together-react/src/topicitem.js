@@ -30,9 +30,12 @@ class TopicItem extends React.Component {
           return (
             <div key={i}>
               <hr/>
-              <div>Name: {name}</div>
-              <div>Title: {title}</div>
-              <div>{details}</div>
+              <div className='discussionTitle'>What:</div>
+              <div className='discussionData'>{title}</div>
+              <div className='discussionTitle'>Why:</div>
+              <div className='discussionData'>{details}</div>
+              <div className='discussionTitle'>Who:</div>
+              <div className='discussionData'>{name}</div>
             </div>
           )
         })}
