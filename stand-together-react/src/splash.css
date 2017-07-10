@@ -122,6 +122,12 @@ transform: rotate(46deg);
   color: #77CBB9;
 }
 
+.discussionSubmit {
+  font-size: 10px;
+  color: grey;
+  font-style: italic;
+}
+
 /*CSS GRID*/
 
 /*.container {

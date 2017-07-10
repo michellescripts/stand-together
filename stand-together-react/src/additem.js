@@ -26,7 +26,8 @@ class AddItem extends React.Component {
           <input type='text' onChange={this.handleNameChange} className='addInput' name='name' id='name' /><br />
           <label className="addLabel" htmlFor='details'>Details</label><br />
           <input type='text' onChange={this.handleDetailsChange} className='addInput' name='details' id='details' /><br />
-          <button onClick={()=>onAddClick({name, title, details})} className='checkButton'> &#10003; </button><br /> 
+          <button onClick={()=>onAddClick({name, title, details})} className='checkButton'> &#10003; </button><br />
+          {/* add handle change for all states to clear form. change edit mode to close form*/}
         </section>
       </div>
     )
