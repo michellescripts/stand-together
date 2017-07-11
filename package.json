@@ -5,14 +5,19 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.15.3",
+    "redux": "^3.7.1",
     "shortid": "^2.2.8"
   },
   "scripts": {
     "start": "concurrently \"yarn run server\" \"yarn run client\"",
-    "server": "node index.js",
+    "server": "nodemon index.js --exec babel-node --presets es2015,stage-2",
     "client": "node start-client.js"
   },
   "devDependencies": {
-    "concurrently": "^3.5.0"
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.11.0"
   }
 }
