@@ -5,6 +5,7 @@ import store from './createstore'
 import { newStandup } from './action'
 
 const app = express()
+shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@$')
 
 app.use((req, res, next) => {
   next()
