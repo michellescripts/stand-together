@@ -1,4 +1,6 @@
 import { NEW_STANDUP } from './action'
+import clientReducer from './stand-together-react/src/reducers/reducer'
+import { ADD_DISCUSSION } from './stand-together-react/src/actions/actions'
 
 const initialState = {
   standups: [],
@@ -23,6 +25,16 @@ const reducer = (state = initialState, action) => {
               Resources: []
             }
           }
+        }
+      }
+    case ADD_DISCUSSION:
+      console.log('hitting or not')
+      const id = action.id
+      return {
+        standups: state.standups,
+        byId: {
+          ...state.byID,
+          [id]: clientReducer(state.standups.byId[id], action)
         }
       }
     default:
