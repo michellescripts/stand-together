@@ -1,4 +1,4 @@
-import { ADD_TOPIC, ADD_DISCUSSION } from '../actions/actions'
+import { ADD_TOPIC, ADD_DISCUSSION, FETCH_STANDUPS_SUCCESS } from '../actions/actions'
 
 const initialState = {
   topics: [],
@@ -27,6 +27,16 @@ const reducer = (state = initialState, action) => {
           [topic]: [...currentItems, {name, title, details}]
         }
       }
+    case FETCH_STANDUPS_SUCCESS:
+      const newState = {
+        ...state,
+        topics: action.response.topics,
+        itemByTopic: {}
+      }
+      action.response.topics.forEach((topic) => {
+        newState.itemByTopic[topic] = []
+      })
+      return newState
     default:
       return state
   }
