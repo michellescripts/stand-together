@@ -8,7 +8,16 @@ import bodyParser from 'body-parser'
 const app = express()
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@$')
 
+// for websockets
+var http = require('http').Server(app)
+var io = require('socket.io')(http)
+
 app.use(bodyParser.json())
+
+// websockets
+io.on('connection', (socket) => {
+  console.log('a user connected')
+})
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'stand-together-react', 'build')))
@@ -47,5 +56,4 @@ app.get('*', (req, res) => {
 })
 
 const port = process.env.PORT || 5000
-app.listen(port)
-console.log('listening here ', port)
+http.listen(port, () => { console.log('listening on ', port) })
