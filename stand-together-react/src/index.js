@@ -5,15 +5,8 @@ import { unregister } from './registerServiceWorker'
 import { createStore } from 'redux'
 import reducer from './reducers/reducer'
 import { Provider } from 'react-redux'
-// import { addTopic, addDiscussionItem } from './actions/actions'
-// import { addTopic } from './actions/actions'
 
 const store = createStore(reducer)
-
-// store.dispatch(addTopic('Interestings'))
-// store.dispatch(addTopic('Events'))
-// store.dispatch(addTopic('Resources'))
-// store.dispatch(addDiscussionItem('Resources', 'Michelle', 'Learns', 'Or tries to'))
 
 ReactDOM.render(
   <Provider store={store}>

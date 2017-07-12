@@ -11,12 +11,29 @@ shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWX
 // for websockets
 var http = require('http').Server(app)
 var io = require('socket.io')(http)
+var wsconnections = {}
 
 app.use(bodyParser.json())
 
 // websockets
 io.on('connection', (socket) => {
-  console.log('a user connected')
+  socket.on('disconnect', () => {
+    // remove from connections
+    Object.keys(wsconnections).forEach(key => {
+      if (wsconnections[key].indexOf(socket.id) != -1) {
+        wsconnections[key].splice(wsconnections[key].indexOf(socket.id), 1)
+      }
+    })
+  })
+  socket.on('register', (data) => {
+    // add to connections
+    if (!wsconnections[data.standupId]) {
+      wsconnections[data.standupId] = []
+      wsconnections[data.standupId].push(socket.id)
+    } else {
+      wsconnections[data.standupId].push(socket.id)
+    }
+  })
 })
 
 if (process.env.NODE_ENV === 'production') {
@@ -34,7 +51,7 @@ app.get('/api/standup/:id', (req, res) => {
   if (state.byId.hasOwnProperty(id)) {
     res.json(state.byId[id])
   } else {
-    res.send('standup ' + id + ' does not exist', 404)
+    res.status(404).send('standup ' + id + ' does not exist')
   }
 })
 
@@ -52,7 +69,7 @@ app.post('/api/standup/:id', (req, res) => {
 })
 
 app.get('*', (req, res) => {
-  res.send('404', 404)
+  res.status(404).send('Not Found!')
 })
 
 const port = process.env.PORT || 5000

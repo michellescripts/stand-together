@@ -2,6 +2,11 @@ import React from 'react'
 import TopicItem from './topicitem'
 import { connect } from 'react-redux'
 import { addDiscussionItem, fetchSuccess } from './actions/actions'
+import io from 'socket.io-client'
+
+// socket.on('new message', function (data) {
+//   console.log(data)
+// })
 
 const mapStateToProps = (state) => {
   return {
@@ -22,6 +27,7 @@ const mapDispatchToProps = (dispatch) => {
         body: JSON.stringify(action)
       })
       dispatch(action)
+      // call websockets to update
     },
     fetchResponse: (response) => {
       dispatch(fetchSuccess(response))
@@ -41,6 +47,12 @@ class BP extends React.Component {
     fetchPosts(match.params.id).then((response) => {
       fetchResponse(response)
     })
+    // initiate ws connection
+    this.socket = io(`http://localhost:5000`)
+    this.socket.emit('register', { standupId: match.params.id })
+    // this.socket.on('addItem', ()=> {
+    //   trigger action with new item
+    // })
   }
   render () {
     const { match, topics, items, onAddItem } = this.props
