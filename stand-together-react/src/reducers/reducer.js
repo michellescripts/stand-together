@@ -34,7 +34,7 @@ const reducer = (state = initialState, action) => {
         itemByTopic: {}
       }
       action.response.topics.forEach((topic) => {
-        newState.itemByTopic[topic] = []
+        newState.itemByTopic[topic] = action.response.itemByTopic[topic]
       })
       return newState
     default:

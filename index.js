@@ -3,13 +3,12 @@ import path from 'path'
 import shortid from 'shortid'
 import store from './createstore'
 import { newStandup } from './action'
+import bodyParser from 'body-parser'
 
 const app = express()
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@$')
 
-app.use((req, res, next) => {
-  next()
-})
+app.use(bodyParser.json())
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'stand-together-react', 'build')))
@@ -21,7 +20,6 @@ app.get('/standup/*', (req, res) => {
 
 app.get('/api/standup/:id', (req, res) => {
   // react code makes the fetch
-  console.log('hit here')
   const state = store.getState()
   const id = req.params.id
   if (state.byId.hasOwnProperty(id)) {
@@ -35,6 +33,13 @@ app.get('/new', (req, res) => {
   let id = shortid.generate()
   store.dispatch(newStandup(id))
   return res.redirect('/standup/' + id)
+})
+
+app.post('/api/standup/:id', (req, res) => {
+  const action = req.body
+  action['id'] = req.params.id
+  store.dispatch(action)
+  res.status(204).end()
 })
 
 app.get('*', (req, res) => {

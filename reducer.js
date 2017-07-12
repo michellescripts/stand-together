@@ -28,15 +28,15 @@ const reducer = (state = initialState, action) => {
         }
       }
     case ADD_DISCUSSION:
-      console.log('hitting or not')
       const id = action.id
-      return {
+      const nextState = {
         standups: state.standups,
         byId: {
           ...state.byID,
-          [id]: clientReducer(state.standups.byId[id], action)
+          [id]: clientReducer(state.byId[id], action)
         }
       }
+      return nextState
     default:
       return state
   }

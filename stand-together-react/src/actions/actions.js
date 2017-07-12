@@ -9,7 +9,6 @@ export const addTopic = (topic) => {
 }
 
 export const addDiscussionItem = (topic, name, title, details) => {
-  // TODO: post to server redux
   return { type: ADD_DISCUSSION, topic, name, title, details}
 }
 

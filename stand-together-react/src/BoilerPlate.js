@@ -12,8 +12,16 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAddItem: (topic, name, title, details) => {
-      dispatch(addDiscussionItem(topic, name, title, details))
+    onAddItem: (topic, name, title, details, id) => {
+      const action = addDiscussionItem(topic, name, title, details)
+      fetch(`/api/standup/${id}`, {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify(action)
+      })
+      dispatch(action)
     },
     fetchResponse: (response) => {
       dispatch(fetchSuccess(response))
@@ -35,8 +43,6 @@ class BP extends React.Component {
     })
   }
   render () {
-    console.log('topics: ')
-    console.log(this.props.topics)
     const { match, topics, items, onAddItem } = this.props
     return (
       <div>
@@ -49,7 +55,9 @@ class BP extends React.Component {
           {/* <div className='container'> */}
           {topics.map((topic, i) => {
             const currentItems = items[topic]
-            return <TopicItem title={topic} key={i} items={currentItems} addAnItem={onAddItem} />
+            return <TopicItem title={topic} key={i}
+              items={currentItems}
+              addAnItem={(topic, name, title, details) => onAddItem(topic, name, title, details, match.params.id)} />
           })}
         </div>
       </div>
