@@ -62,7 +62,7 @@ class BP extends React.Component {
     return (
       <div>
         <div className='homeNavBar'>
-          <h2 className='title'>Stand Together<FontAwesome name='users' /></h2>
+          <a href='/'><h2 className='title'>Stand Together<FontAwesome name='users' /></h2></a>
           <ClipboardButton className='button right' data-clipboard-text={currentURL}>
             <FontAwesome name='clipboard' /> Copy Link
           </ClipboardButton>

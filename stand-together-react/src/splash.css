@@ -13,6 +13,10 @@ html {
   font-family: 'Bungee Hairline';
 }
 
+a{
+  text-decoration: none;
+}
+
 .parentFlex {
   display: flex;
   flex-direction: row;
