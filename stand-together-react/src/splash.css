@@ -63,7 +63,8 @@ html {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: bolder;
   margin-top: 2%;
    margin-right: 25px;
   -webkit-transition-duration: 0.4s; /* Safari */
@@ -102,11 +103,11 @@ transform: rotate(46deg);
 }
 
 .checkButton {
-  font-size: 150%;
-  border: 2px solid #77CBB9;
-  background-color: #77CBB9;
-  border-radius: 50px;
-  margin-left: 90%;
+  font-size: 45px;
+  background-color: white;
+  color: #77CBB9;
+  border: none;
+  margin-left: 80%;
 }
 
 .addInput {
@@ -114,6 +115,7 @@ transform: rotate(46deg);
   border: 3px solid #77CBB9;
   margin-bottom: 10px;
   font-size: 20px;
+  font-weight: bold;
   color: #506C64;
 }
 
@@ -142,6 +144,11 @@ transform: rotate(46deg);
   color: grey;
   font-weight: bold;
   font-style: italic;
+}
+
+.fa {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 @media (min-width: 40em) {
