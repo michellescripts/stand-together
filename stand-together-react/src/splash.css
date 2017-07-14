@@ -152,6 +152,10 @@ transform: rotate(46deg);
   padding-right: 10px;
 }
 
+.fabutton {
+  color: #011638;
+}
+
 @media (min-width: 40em) {
   .homeNavBar {
     flex-direction: row;

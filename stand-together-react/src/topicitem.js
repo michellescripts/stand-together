@@ -20,7 +20,7 @@ class TopicItem extends React.Component {
   render () {
     const {title, items} = this.props
     const {addMode} = this.state
-    let buttonClasses = 'right'
+    let buttonClasses = 'right fabutton'
     if (addMode) {buttonClasses += ' addMode'}
     return (
       <div className='TopicBox'>
