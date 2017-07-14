@@ -6,6 +6,7 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
+    "react-clipboard.js": "^1.1.2",
     "react-fontawesome": "^1.6.1",
     "redux": "^3.7.1",
     "shortid": "^2.2.8",

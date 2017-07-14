@@ -3,10 +3,7 @@ import TopicItem from './topicitem'
 import { connect } from 'react-redux'
 import { addDiscussionItem, fetchSuccess } from './actions/actions'
 import io from 'socket.io-client'
-
-// socket.on('new message', function (data) {
-//   console.log(data)
-// })
+import ClipboardButton from 'react-clipboard.js'
 
 const mapStateToProps = (state) => {
   return {
@@ -49,6 +46,7 @@ const updateCodeFromSockets = (payload) => {
 
 class BP extends React.Component {
   componentDidMount () {
+    console.log('props', this.props)
     const { match, fetchResponse } = this.props
     fetchPosts(match.params.id).then((response) => {
       fetchResponse(response)
@@ -62,12 +60,14 @@ class BP extends React.Component {
   }
   render () {
     const { match, topics, items, onAddItem } = this.props
+    const currentURL = 'http://localhost:3000/standup/' + match.params.id
     return (
       <div>
         <div className='homeNavBar'>
           <h2>Stand Together</h2>
-          <p id='p1'>http/localhost:5000/standup/{match.params.id}</p>
-          <button className='button right'>Copy Link</button>
+          <ClipboardButton className='button right' data-clipboard-text={currentURL}>
+            Copy Link
+          </ClipboardButton>
         </div>
         <div className='flexRow'>
           {/* <div className='container'> */}

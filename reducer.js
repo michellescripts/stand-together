@@ -17,11 +17,11 @@ const reducer = (state = initialState, action) => {
           ...state.byId,
           [action.id]: {
             // initial standup skeleton
-            topics: ['Events', 'Interestings', 'Announce', 'Resources'],
+            topics: ['Events', 'Interestings', 'Announcements', 'Resources'],
             itemByTopic: {
               Events: [],
               Interestings: [],
-              Announce: [],
+              Announcements: [],
               Resources: []
             }
           }

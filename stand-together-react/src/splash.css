@@ -9,7 +9,7 @@ html {
 }
 
 * {
-  font-family: sans-serif;
+  font-family:  'Open Sans', sans-serif;
 }
 
 .parentFlex {
@@ -41,6 +41,7 @@ html {
   flex-direction: row;
   justify-content: space-between;
   background-color: #506C64;
+  padding-left: 20px;
 }
 
 .homeNavBar h2, .homeNavBar p {
