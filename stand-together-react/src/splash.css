@@ -28,12 +28,15 @@ html {
 .TopicBox {
   background-color: white;
   padding: 1%;
-  width: 28%;
-  margin: 1.5%;
+  margin: 2%;
+  width: 88%;
+  /*margin: 1.5%;*/
 }
 
 .itemHeader {
   color: #77CBB9;
+  font-size: 30px;
+  font-size: 6vw;
 }
 
 .homeNavBar {
@@ -53,7 +56,7 @@ html {
 }
 
 .button {
-  padding: 16px 32px;
+  padding: 10px 22px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -99,7 +102,7 @@ transform: rotate(46deg);
 }
 
 .addInput {
-  width: 100%;
+  width: 90%;
   border: 3px solid #77CBB9;
   margin-bottom: 10px;
   font-size: 20px;
@@ -128,6 +131,18 @@ transform: rotate(46deg);
   font-size: 10px;
   color: grey;
   font-style: italic;
+}
+
+@media (min-width: 40em) {
+  .TopicBox {
+    padding: 1%;
+    width: 28%;
+    margin: 1.5%;
+  }
+  .itemHeader{
+    font-size: 30px;
+    font-size: 2vw;
+  }
 }
 
 /*CSS GRID*/
