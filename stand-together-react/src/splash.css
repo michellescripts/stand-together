@@ -17,6 +17,12 @@ a{
   text-decoration: none;
 }
 
+.splashImage {
+  background-image: url('./splashlight.png');
+  height: 100vh;
+  background-size: cover;
+}
+
 .parentFlex {
   display: flex;
   flex-direction: row;
