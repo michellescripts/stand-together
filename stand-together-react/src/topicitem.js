@@ -1,6 +1,7 @@
 import React from 'react'
 import AddItem from './additem'
 import styles from './splash.css'
+import FontAwesome from 'react-fontawesome'
 
 class TopicItem extends React.Component {
   constructor () {
@@ -26,7 +27,9 @@ class TopicItem extends React.Component {
         <div className='parentFlex'>
          {/* <div className='gallery'> */}
           <h1 className='itemHeader'>{title}</h1>
-          <h1 className={buttonClasses} onClick={this.changeEditMode}>+</h1>
+          <h1 className={buttonClasses} onClick={this.changeEditMode}>
+            <FontAwesome name='plus-circle' />
+          </h1>
         </div>
         {addMode && <AddItem onAddClick={(obj)=>this.addClicked(title, obj)} />}
         {items.map((item, i) => {

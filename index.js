@@ -24,6 +24,7 @@ io.on('connection', (socket) => {
         wsconnections[key].splice(wsconnections[key].indexOf(socket.id), 1)
       }
     })
+    // console.log('after discconect: ', wsconnections)
   })
   socket.on('register', (data) => {
     // add to connections
@@ -70,6 +71,8 @@ app.post('/api/standup/:id', (req, res) => {
   const action = req.body
   action['id'] = req.params.id
   store.dispatch(action)
+  // here tell clients
+  // for each socket in su socket.emit('key')
   res.status(204).end()
 })
 
