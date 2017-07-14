@@ -43,7 +43,7 @@ html {
 
 .homeNavBar {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   background-color: #506C64;
   padding-left: 20px;
@@ -66,6 +66,7 @@ html {
   font-size: 20px;
   font-weight: bolder;
   margin-top: 2%;
+  margin-bottom: 2%;
    margin-right: 25px;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
@@ -90,7 +91,7 @@ html {
 }
 
 .title {
-  font-size: 2.5vw;
+  font-size: 7vw;
   font-family: 'Bungee Shade', cursive;
 }
 
@@ -152,6 +153,9 @@ transform: rotate(46deg);
 }
 
 @media (min-width: 40em) {
+  .homeNavBar {
+    flex-direction: row;
+  }
   .TopicBox {
     padding: 1%;
     width: 28%;
@@ -160,6 +164,9 @@ transform: rotate(46deg);
   .itemHeader{
     font-size: 30px;
     font-size: 2vw;
+  }
+  .title {
+    font-size: 2.5vw;
   }
 }
 
