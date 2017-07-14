@@ -33,6 +33,11 @@ io.on('connection', (socket) => {
     } else {
       wsconnections[data.standupId].push(socket.id)
     }
+    // console.log('after connection: ', wsconnections)
+  })
+  socket.on('addEvent', (data, standupId) => {
+    console.log('hitting broadcast')
+    socket.broadcast.emit('receive code', data)
   })
 })
 

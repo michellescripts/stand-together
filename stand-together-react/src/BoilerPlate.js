@@ -17,7 +17,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAddItem: (topic, name, title, details, id) => {
+    onAddItem: (topic, name, title, details, id, socket) => {
       const action = addDiscussionItem(topic, name, title, details)
       fetch(`/api/standup/${id}`, {
         headers: {
@@ -26,8 +26,8 @@ const mapDispatchToProps = (dispatch) => {
         method: 'POST',
         body: JSON.stringify(action)
       })
+      socket.emit('addEvent', {data: action, standupId: id})
       dispatch(action)
-      // call websockets to update
     },
     fetchResponse: (response) => {
       dispatch(fetchSuccess(response))
@@ -41,6 +41,12 @@ const fetchPosts = (id) => {
   })
 }
 
+const updateCodeFromSockets = (payload) => {
+    // this.setState({code: payload.newCode})
+    // ADD TO MAP TO STATE PROPS
+  console.log('Hit update current state with: ', payload.data)
+}
+
 class BP extends React.Component {
   componentDidMount () {
     const { match, fetchResponse } = this.props
@@ -50,9 +56,9 @@ class BP extends React.Component {
     // initiate ws connection
     this.socket = io(`http://localhost:5000`)
     this.socket.emit('register', { standupId: match.params.id })
-    // this.socket.on('addItem', ()=> {
-    //   trigger action with new item
-    // })
+    this.socket.on('receive code', (payload) => {
+      updateCodeFromSockets(payload)
+    })
   }
   render () {
     const { match, topics, items, onAddItem } = this.props
@@ -69,7 +75,7 @@ class BP extends React.Component {
             const currentItems = items[topic]
             return <TopicItem title={topic} key={i}
               items={currentItems}
-              addAnItem={(topic, name, title, details) => onAddItem(topic, name, title, details, match.params.id)} />
+              addAnItem={(topic, name, title, details) => onAddItem(topic, name, title, details, match.params.id, this.socket)} />
           })}
         </div>
       </div>
