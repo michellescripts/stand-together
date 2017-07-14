@@ -10,6 +10,7 @@ html {
 
 * {
   font-family:  'Open Sans', sans-serif;
+  font-family: 'Bungee Hairline';
 }
 
 .parentFlex {
@@ -37,6 +38,7 @@ html {
   color: #77CBB9;
   font-size: 30px;
   font-size: 6vw;
+  font-family: 'Bungee';
 }
 
 .homeNavBar {
@@ -124,18 +126,21 @@ transform: rotate(46deg);
 }
 
 .discussionTitle {
-  font-size: 20px;
+  font-size: 30px;
+  font-weight: bold;
   color: #506C64;
 }
 
 .discussionData {
-  font-size: 16px;
+  font-size: 26px;
+  font-weight: bold;
   color: #77CBB9;
 }
 
 .discussionSubmit {
-  font-size: 10px;
+  font-size: 15px;
   color: grey;
+  font-weight: bold;
   font-style: italic;
 }
 

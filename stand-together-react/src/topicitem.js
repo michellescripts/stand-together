@@ -37,7 +37,7 @@ class TopicItem extends React.Component {
           return (
             <div key={i}>
               <hr/>
-              <div className='discussionTitle'>{title}</div>
+              <div className='discussionTitle'>{title}:</div>
               <div className='discussionData'>{details}</div>
               <div className='discussionSubmit'>submitted by {name}</div>
             </div>
