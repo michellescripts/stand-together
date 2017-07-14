@@ -29,7 +29,8 @@ const mapDispatchToProps = (dispatch) => {
     },
     fetchResponse: (response) => {
       dispatch(fetchSuccess(response))
-    }
+    },
+    dispatch: dispatch
   }
 }
 
@@ -37,12 +38,6 @@ const fetchPosts = (id) => {
   return fetch(`/api/standup/${id}`).then((r) => {
     return r.json()
   })
-}
-
-const updateCodeFromSockets = (payload) => {
-    // this.setState({code: payload.newCode})
-    // ADD TO MAP TO STATE PROPS
-  console.log('Hit update current state with: ', payload.data)
 }
 
 class BP extends React.Component {
@@ -56,7 +51,9 @@ class BP extends React.Component {
     this.socket = io(`http://localhost:5000`)
     this.socket.emit('register', { standupId: match.params.id })
     this.socket.on('receive code', (payload) => {
-      updateCodeFromSockets(payload)
+      if (match.params.id == payload.standupId) {
+        this.props.dispatch(payload.data)
+      }
     })
   }
   render () {
