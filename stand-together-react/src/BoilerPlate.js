@@ -51,7 +51,7 @@ class BP extends React.Component {
     this.socket = io(`http://localhost:5000`)
     this.socket.emit('register', { standupId: match.params.id })
     this.socket.on('receive code', (payload) => {
-      if (match.params.id == payload.standupId) {
+      if (match.params.id === payload.standupId) {
         this.props.dispatch(payload.data)
       }
     })

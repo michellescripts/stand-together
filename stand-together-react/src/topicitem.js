@@ -1,6 +1,5 @@
 import React from 'react'
 import AddItem from './additem'
-import styles from './splash.css'
 import FontAwesome from 'react-fontawesome'
 
 class TopicItem extends React.Component {

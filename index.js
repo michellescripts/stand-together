@@ -24,7 +24,6 @@ io.on('connection', (socket) => {
         wsconnections[key].splice(wsconnections[key].indexOf(socket.id), 1)
       }
     })
-    // console.log('after discconect: ', wsconnections)
   })
   socket.on('register', (data) => {
     // add to connections
@@ -34,7 +33,6 @@ io.on('connection', (socket) => {
     } else {
       wsconnections[data.standupId].push(socket.id)
     }
-    // console.log('after connection: ', wsconnections)
   })
   socket.on('addEvent', (data, standupId) => {
     console.log('hitting broadcast')

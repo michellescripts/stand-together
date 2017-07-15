@@ -22,8 +22,6 @@ const reducer = (state = initialState, action) => {
         topics: state.topics,
         itemByTopic: {
           ...state.itemByTopic,
-          // can do without const current items:
-          // itemByTopic: [...state.itemByTopic[action.topic], {name, title, details}]
           [topic]: [...currentItems, {name, title, details}]
         }
       }

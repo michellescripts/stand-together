@@ -32,7 +32,7 @@ const reducer = (state = initialState, action) => {
       const nextState = {
         standups: state.standups,
         byId: {
-          ...state.byID,
+          ...state.byId,
           [id]: clientReducer(state.byId[id], action)
         }
       }

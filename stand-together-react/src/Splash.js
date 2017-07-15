@@ -1,5 +1,4 @@
 import React from 'react'
-import styles from './splash.css'
 import FontAwesome from 'react-fontawesome'
 
 const Splash = () => (

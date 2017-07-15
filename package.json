@@ -9,13 +9,15 @@
     "react-clipboard.js": "^1.1.2",
     "react-fontawesome": "^1.6.1",
     "redux": "^3.7.1",
+    "redux-node-logger": "^0.1.0",
     "shortid": "^2.2.8",
     "socket.io": "^2.0.3"
   },
   "scripts": {
     "start": "concurrently \"yarn run server\" \"yarn run client\"",
     "server": "nodemon index.js --exec babel-node --presets es2015,stage-2",
-    "client": "node start-client.js"
+    "client": "node start-client.js",
+    "test": "babel-node --presets es2015,stage-2 test.js"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
