@@ -5,6 +5,7 @@ import { addDiscussionItem, fetchSuccess } from './actions/actions'
 import io from 'socket.io-client'
 import ClipboardButton from 'react-clipboard.js'
 import FontAwesome from 'react-fontawesome'
+import { Link } from 'react-router-dom'
 
 const mapStateToProps = (state) => {
   return {
@@ -42,7 +43,6 @@ const fetchPosts = (id) => {
 
 class BP extends React.Component {
   componentDidMount () {
-    console.log('props', this.props)
     const { match, fetchResponse } = this.props
     fetchPosts(match.params.id).then((response) => {
       fetchResponse(response)
@@ -63,6 +63,7 @@ class BP extends React.Component {
       <div>
         <div className='homeNavBar'>
           <a href='/'><h2 className='title'>Stand Together<FontAwesome name='users' /></h2></a>
+          <Link to={'/prez/' + match.params.id}> Present </Link>
           <ClipboardButton className='button right' data-clipboard-text={currentURL}>
             <FontAwesome name='clipboard' /> Copy Link
           </ClipboardButton>
