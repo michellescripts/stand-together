@@ -51,7 +51,7 @@ const Prez = (props) => {
   props.topics.forEach((topic) => {
     if (props.items[topic] && props.items[topic].length) {
       slides.push(
-        <Slide transition={['zoom']} bgColor='tertiary'>
+        <Slide transition={['fade']} bgColor='tertiary'>
           <Heading size={1} fit caps lineHeight={1} textColor='quartenary'>
             {topic}
           </Heading>
@@ -59,7 +59,7 @@ const Prez = (props) => {
       )
       props.items[topic].forEach((discussionItem) => {
         slides.push(
-          <Slide transition={['zoom']} bgColor='secondary'>
+          <Slide transition={['fade']} bgColor='secondary'>
             <Heading size={5} textFont='tertiary' textColor='primary'>Topic: {topic}</Heading>
             <Heading size={5} textFont='tertiary' textColor='primary'>Submitted by: {discussionItem.name}</Heading>
             <Heading size={1} textFont='secondary' textColor='tertiary'>{discussionItem.title}</Heading>
@@ -70,7 +70,7 @@ const Prez = (props) => {
     }
   })
   slides.push(
-    <Slide transition={['zoom']} bgColor='primary'>
+    <Slide transition={['spin']} bgColor='primary'>
       <Heading size={1} fit caps lineHeight={1} textColor='secondary'>
         Clap!
       </Heading>
