@@ -12,9 +12,7 @@
     "redux": "^3.7.1",
     "redux-logger": "^3.0.6",
     "socket.io-client": "^2.0.3",
-    "spectacle": "^2.1.0"
-  },
-  "devDependencies": {
+    "spectacle": "^2.1.0",
     "react-scripts": "1.0.10"
   },
   "scripts": {
