@@ -43,12 +43,14 @@ const fetchPosts = (id) => {
 
 class BP extends React.Component {
   componentDidMount () {
+    console.log('here. ', process.env.REACT_APP_TEST)
     const { match, fetchResponse } = this.props
     fetchPosts(match.params.id).then((response) => {
       fetchResponse(response)
     })
     // initiate ws connection
-    this.socket = io(`http://localhost:5000`)
+    const url = process.env.REACT_APP_URL || `http://localhost:5000`
+    this.socket = io(url)
     this.socket.emit('register', { standupId: match.params.id })
     this.socket.on('receive code', (payload) => {
       if (match.params.id === payload.standupId) {
@@ -58,7 +60,7 @@ class BP extends React.Component {
   }
   render () {
     const { match, topics, items, onAddItem } = this.props
-    const currentURL = 'http://localhost:3000/standup/' + match.params.id
+    const currentURL = window.location.origin + '/standup/' + match.params.id
     return (
       <div>
         <div className='homeNavBar'>

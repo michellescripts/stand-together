@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 stand-together-react/node_modules
+stand-together-react/build
 
 # testing
 /coverage
