@@ -19,7 +19,7 @@
     "server": "nodemon index.js --exec babel-node --presets es2015,stage-2",
     "client": "node start-client.js",
     "test": "babel-node --presets es2015,stage-2 test.js",
-    "heroku-postbuild": "cd stand-together-react && REACT_APP_URL=https://standtogether.herokuapp.com/ yarn build"
+    "heroku-postbuild": "cd stand-together-react && yarn install && REACT_APP_URL=https://standtogether.herokuapp.com/ yarn build"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
