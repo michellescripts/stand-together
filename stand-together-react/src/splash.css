@@ -18,7 +18,8 @@ a{
 }
 
 .splashImage {
-  background-image: url('./splashthreem.png');
+  /*background-image: url('./splashthreem.png');*/
+  background-image: url('https://d28fz8geg24kjr.cloudfront.net/splashthreem.png');
   height: 100vh;
   background-size: cover;
 }
@@ -183,7 +184,8 @@ transform: rotate(46deg);
     font-size: 2.5vw;
   }
   .splashImage {
-    background-image: url('./splashthree.png');
+    /*background-image: url('./splashthree.png');*/
+    background-image: url('https://d28fz8geg24kjr.cloudfront.net/splashthree.png');
     height: 100vh;
     background-size: cover;
   }
