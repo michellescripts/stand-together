@@ -38,6 +38,10 @@ io.on('connection', (socket) => {
     console.log('hitting broadcast')
     socket.broadcast.emit('receive code', data)
   })
+  socket.on('removeEvent', (data, standupId) => {
+    console.log('hitting broadcast')
+    socket.broadcast.emit('receive code', data)
+  })
 })
 
 if (process.env.NODE_ENV === 'production') {
@@ -69,8 +73,13 @@ app.post('/api/standup/:id', (req, res) => {
   const action = req.body
   action['id'] = req.params.id
   store.dispatch(action)
-  // here tell clients
-  // for each socket in su socket.emit('key')
+  res.status(204).end()
+})
+
+app.delete('/api/standup/:id', (req, res) => {
+  const action = req.body
+  action['id'] = req.params.id
+  store.dispatch(action)
   res.status(204).end()
 })
 

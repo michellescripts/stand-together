@@ -1,7 +1,7 @@
 import React from 'react'
 import TopicItem from './topicitem'
 import { connect } from 'react-redux'
-import { addDiscussionItem, fetchSuccess } from './actions/actions'
+import { addDiscussionItem, removeDiscussionItem, fetchSuccess } from './actions/actions'
 import io from 'socket.io-client'
 import ClipboardButton from 'react-clipboard.js'
 import FontAwesome from 'react-fontawesome'
@@ -26,6 +26,19 @@ const mapDispatchToProps = (dispatch) => {
         body: JSON.stringify(action)
       })
       socket.emit('addEvent', {data: action, standupId: id})
+      dispatch(action)
+    },
+    onRemoveItem: (currentTopic, ind, id, socket) => {
+      console.log('onRemoveItem')
+      const action = removeDiscussionItem(currentTopic, ind)
+      fetch(`/api/standup/${id}`, {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'DELETE',
+        body: JSON.stringify(action)
+      })
+      socket.emit('removeEvent', {data: action, standupId: id})
       dispatch(action)
     },
     fetchResponse: (response) => {
@@ -59,7 +72,7 @@ class BP extends React.Component {
     })
   }
   render () {
-    const { match, topics, items, onAddItem } = this.props
+    const { match, topics, items, onAddItem, onRemoveItem } = this.props
     const currentURL = window.location.origin + '/standup/' + match.params.id
     return (
       <div>
@@ -81,7 +94,8 @@ class BP extends React.Component {
             const currentItems = items[topic]
             return <TopicItem title={topic} key={i}
               items={currentItems}
-              addAnItem={(topic, name, title, details) => onAddItem(topic, name, title, details, match.params.id, this.socket)} />
+              addAnItem={(topic, name, title, details) => onAddItem(topic, name, title, details, match.params.id, this.socket)}
+              removeAnItem={(ind) => onRemoveItem(topic, ind, match.params.id, this.socket)} />
           })}
         </div>
       </div>

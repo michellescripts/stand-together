@@ -1,6 +1,6 @@
 import { NEW_STANDUP } from './action'
 import clientReducer from './stand-together-react/src/reducers/reducer'
-import { ADD_DISCUSSION } from './stand-together-react/src/actions/actions'
+import { ADD_DISCUSSION, REMOVE_DISCUSSION } from './stand-together-react/src/actions/actions'
 
 const initialState = {
   standups: [],
@@ -36,6 +36,17 @@ const reducer = (state = initialState, action) => {
         }
       }
       return nextState
+    case REMOVE_DISCUSSION:
+      console.log('hey we are here')
+      const currentId = action.id
+      const afterState = {
+        standups: state.standups,
+        byId: {
+          ...state.byId,
+          [currentId]: clientReducer(state.byId[currentId], action)
+        }
+      }
+      return afterState
     default:
       return state
   }

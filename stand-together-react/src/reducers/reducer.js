@@ -1,4 +1,4 @@
-import { ADD_TOPIC, ADD_DISCUSSION, FETCH_STANDUPS_SUCCESS } from '../actions/actions'
+import { ADD_TOPIC, ADD_DISCUSSION, REMOVE_DISCUSSION, FETCH_STANDUPS_SUCCESS } from '../actions/actions'
 
 const initialState = {
   topics: [],
@@ -23,6 +23,17 @@ const reducer = (state = initialState, action) => {
         itemByTopic: {
           ...state.itemByTopic,
           [topic]: [...currentItems, {name, title, details}]
+        }
+      }
+    case REMOVE_DISCUSSION:
+      const {currentTopic, ind} = action
+      const allCurrentItems = state.itemByTopic[currentTopic]
+      allCurrentItems.splice(ind, 1)
+      return {
+        topics: state.topics,
+        itemByTopic: {
+          ...state.itemByTopic,
+          [currentTopic]: [...allCurrentItems]
         }
       }
     case FETCH_STANDUPS_SUCCESS:

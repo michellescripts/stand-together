@@ -167,6 +167,14 @@ transform: rotate(46deg);
   color: #011638;
 }
 
+.remove {
+  color: #506C64;
+}
+
+.remove:hover{
+  color: red;
+}
+
 @media (min-width: 40em) {
   .homeNavBar {
     flex-direction: row;
