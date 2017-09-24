@@ -4,6 +4,7 @@ import shortid from 'shortid'
 import store from './createstore'
 import { newStandup } from './action'
 import bodyParser from 'body-parser'
+var knex = require('./dbconnection')
 
 const app = express()
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@$')
@@ -81,6 +82,20 @@ app.delete('/api/standup/:id', (req, res) => {
   action['id'] = req.params.id
   store.dispatch(action)
   res.status(204).end()
+})
+
+app.post('/api/teams/:name', (req, res, next) => {
+  knex('teams').select().where({name: req.params.name}).first()
+  .then((team) => {
+    if (team) {
+      res.status(400).end()
+    } else {
+      knex('teams').insert({name: req.params.name})
+      .then(() => {
+        res.status(200).end()
+      })
+    }
+  })
 })
 
 app.get('*', (req, res) => {

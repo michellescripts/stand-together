@@ -114,6 +114,10 @@ a{
 transform: rotate(46deg);
 }
 
+.errorMode {
+  border: 3px solid #EBA0A7;
+}
+
 .checkButton {
   font-size: 45px;
   background-color: white;
