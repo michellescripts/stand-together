@@ -60,7 +60,8 @@ class BP extends React.Component {
     const { match, fetchResponse } = this.props
     let fetchURL
     if (match.url.startsWith('/team')) {
-      fetchURL = `/api/team/${match.params.name}/${match.params.date}`
+      const date = match.params.date || new Date().toISOString().slice(0, 10).replace(/-/g, '')
+      fetchURL = `/api/team/${match.params.name}/${date}`
     } else {
       fetchURL = `/api/standup/${match.params.id}`
     }

@@ -14,7 +14,7 @@ class App extends Component {
             <Route exact path='/' component={Splash} />
             <Route path='/standup/:id' component={BP} />
             <Route path='/prez/:id' component={Prez} />
-            <Route path='/team/:name/:date' component={BP} />
+            <Route path='/team/:name/:date?' component={BP} />
           </div>
         </Router>
       </div>
