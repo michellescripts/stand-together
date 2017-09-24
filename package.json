@@ -28,7 +28,15 @@
     "heroku-postbuild": "yarn run build && cd stand-together-react && yarn install && REACT_APP_URL=https://standtogether.herokuapp.com/ yarn build && cp -R build ../build/stand-together-react"
   },
   "devDependencies": {
+    "babel-eslint": "^8.0.0",
     "concurrently": "^3.5.0",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "standard": "^10.0.3"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "stand-together-react/**"
+    ]
   }
 }

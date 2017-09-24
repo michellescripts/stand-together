@@ -21,13 +21,13 @@ class AddItem extends React.Component {
     return (
       <div>
         <section className='linkform'>
-          <label className="addLabel" htmlFor='title'>Title</label><br />
+          <label className='addLabel' htmlFor='title'>Title</label><br />
           <input type='text' onChange={this.handleTitleChange} className='addInput' name='title' id='title' /><br />
-          <label className="addLabel" htmlFor='name'>Name</label><br />
+          <label className='addLabel' htmlFor='name'>Name</label><br />
           <input type='text' onChange={this.handleNameChange} className='addInput' name='name' id='name' /><br />
-          <label className="addLabel" htmlFor='details'>Details</label><br />
+          <label className='addLabel' htmlFor='details'>Details</label><br />
           <input type='text' onChange={this.handleDetailsChange} className='addInput' name='details' id='details' /><br />
-          <button onClick={()=>onAddClick({name, title, details})} className='checkButton'>
+          <button onClick={() => onAddClick({name, title, details})} className='checkButton'>
             <FontAwesome name='check-circle' />
           </button><br />
         </section>

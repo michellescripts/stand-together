@@ -8,9 +8,9 @@ class TopicItem extends React.Component {
     this.state = {addMode: false}
   }
   changeEditMode = () => {
-      this.setState(prevState => ({
-        addMode: !prevState.addMode
-      }))
+    this.setState(prevState => ({
+      addMode: !prevState.addMode
+    }))
   }
   removeItem = (ind, event) => {
     this.props.removeAnItem(ind)
@@ -24,22 +24,22 @@ class TopicItem extends React.Component {
     const {addMode} = this.state
     let buttonClasses = 'right fabutton'
     let divClass = ''
-    if (addMode) {buttonClasses += ' addMode'}
+    if (addMode) { buttonClasses += ' addMode' }
     return (
       <div className='TopicBox'>
         <div className='parentFlex'>
-         {/* <div className='gallery'> */}
+          {/* <div className='gallery'> */}
           <h1 className='itemHeader'>{title}</h1>
           <h1 className={buttonClasses} onClick={this.changeEditMode}>
             <FontAwesome name='plus-circle' />
           </h1>
         </div>
-        {addMode && <AddItem onAddClick={(obj)=>this.addClicked(title, obj)} />}
+        {addMode && <AddItem onAddClick={(obj) => this.addClicked(title, obj)} />}
         {items.map((item, ind) => {
           const {name, title, details} = item
           return (
             <div key={ind} className={divClass}>
-              <hr/>
+              <hr />
               <div className='discussionTitle'>{title}:</div>
               <div className='discussionData'>{details}</div>
               <div className='discussionSubmit'>submitted by {name}</div>
