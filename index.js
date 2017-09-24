@@ -53,6 +53,24 @@ app.get('/standup/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'stand-together-react', 'build', 'index.html'))
 })
 
+// app.get('/api/team/:name', (req, res) => {
+//
+// })
+
+app.get('/api/team/:name/:date', (req, res) => {
+  const todaysDate = new Date().toISOString().slice(0, 10).replace(/-/g, '')
+  const state = store.getState()
+  const id = `team/${req.params.name}/${req.params.date}`
+  if (state.byId.hasOwnProperty(id)) {
+    res.json(state.byId[id])
+  } else if (req.params.date === todaysDate) {
+    store.dispatch(newStandup(id))
+    res.json(store.getState().byId[id])
+  } else {
+    res.status(404).send('standup ' + id + ' does not exist')
+  }
+})
+
 app.get('/api/standup/:id', (req, res) => {
   // react code makes the fetch
   const state = store.getState()

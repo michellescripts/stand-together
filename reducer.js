@@ -37,7 +37,6 @@ const reducer = (state = initialState, action) => {
       }
       return nextState
     case REMOVE_DISCUSSION:
-      console.log('hey we are here')
       const currentId = action.id
       const afterState = {
         standups: state.standups,

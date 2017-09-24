@@ -48,8 +48,8 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const fetchPosts = (id) => {
-  return fetch(`/api/standup/${id}`).then((r) => {
+const fetchPosts = (path) => {
+  return fetch(path).then((r) => {
     return r.json()
   })
 }
@@ -58,7 +58,13 @@ class BP extends React.Component {
   componentDidMount () {
     console.log('here. ', process.env.REACT_APP_TEST)
     const { match, fetchResponse } = this.props
-    fetchPosts(match.params.id).then((response) => {
+    let fetchURL
+    if (match.url.startsWith('/team')) {
+      fetchURL = `/api/team/${match.params.name}/${match.params.date}`
+    } else {
+      fetchURL = `/api/standup/${match.params.id}`
+    }
+    fetchPosts(fetchURL).then((response) => {
       fetchResponse(response)
     })
     // initiate ws connection
