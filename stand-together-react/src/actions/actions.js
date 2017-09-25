@@ -6,15 +6,15 @@ export const REMOVE_DISCUSSION = 'REMOVE_DISCUSSION'
 
 // action creator
 export const addTopic = (topic) => {
-  return { type: ADD_TOPIC, topic}
+  return { type: ADD_TOPIC, topic }
 }
 
 export const addDiscussionItem = (topic, name, title, details) => {
-  return { type: ADD_DISCUSSION, topic, name, title, details}
+  return { type: ADD_DISCUSSION, topic, name, title, details }
 }
 
 export const removeDiscussionItem = (currentTopic, ind) => {
-  return { type: REMOVE_DISCUSSION, currentTopic, ind}
+  return { type: REMOVE_DISCUSSION, currentTopic, ind }
 }
 
 export function fetchSuccess (response) {

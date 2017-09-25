@@ -21,7 +21,7 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     // remove from connections
     Object.keys(wsconnections).forEach(key => {
-      if (wsconnections[key].indexOf(socket.id) != -1) {
+      if (wsconnections[key].indexOf(socket.id) !== -1) {
         wsconnections[key].splice(wsconnections[key].indexOf(socket.id), 1)
       }
     })

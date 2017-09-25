@@ -9,11 +9,11 @@
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
+    "react-scripts": "1.0.10",
     "redux": "^3.7.1",
     "redux-logger": "^3.0.6",
     "socket.io-client": "^2.0.3",
-    "spectacle": "^2.1.0",
-    "react-scripts": "1.0.10"
+    "spectacle": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -31,5 +31,14 @@
     "/socket.io": {
       "target": "http://localhost:5000"
     }
+  },
+  "devDependencies": {
+    "standard": "*"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "registerServiceWorker.js"
+    ]
   }
 }

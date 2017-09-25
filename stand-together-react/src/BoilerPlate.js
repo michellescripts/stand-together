@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onAddItem: (topic, name, title, details, id, socket) => {
       const action = addDiscussionItem(topic, name, title, details)
-      fetch(`/api/standup/${id}`, {
+      window.fetch(`/api/standup/${id}`, {
         headers: {
           'Content-Type': 'application/json'
         },
@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch) => {
     onRemoveItem: (currentTopic, ind, id, socket) => {
       console.log('onRemoveItem')
       const action = removeDiscussionItem(currentTopic, ind)
-      fetch(`/api/standup/${id}`, {
+      window.fetch(`/api/standup/${id}`, {
         headers: {
           'Content-Type': 'application/json'
         },
@@ -49,7 +49,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const fetchPosts = (path) => {
-  return fetch(path).then((r) => {
+  return window.fetch(path).then((r) => {
     return r.json()
   })
 }
